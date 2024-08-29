@@ -1,0 +1,3 @@
+在较新的 scikit-image 版本中，rescale() 函数不再使用 multichannel 参数，而是使用 channel_axis 参数。
+
+要修复这个错误，你需要将 multichannel=True 替换为 channel_axis=-1。

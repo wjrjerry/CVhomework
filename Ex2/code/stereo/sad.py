@@ -91,14 +91,14 @@ def sad_convolve(image_left, image_right, window_size=3, max_disparity=50):
     # -------------------------------------
     height, width = image_left.shape
     kernel = np.ones((window_size, window_size)) / window_size ** 2
-    pD = np.zeros((height, width, max_disparity))
+    pD = np.zeros((height, width, max_disparity + 1))
 
     for d in range(max_disparity + 1):
         image_right_shift = np.zeros((height, width))
         image_right_shift[:, d:width] = image_right[:, :width - d]
         image_diff = np.abs(image_right_shift - image_left)
-        image_filter = np.convolve(image_diff, kernel)
+        image_filter = convolve(image_diff, kernel, mode='same')
         pD[:, :, d] = image_filter
 
-    D = np.argmin(D, axis=2)
+    D = np.argmin(pD, axis=2)
     return D
