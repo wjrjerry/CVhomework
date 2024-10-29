@@ -1,0 +1,9 @@
+
+
+get_hog函数中 return应改为
+return hog(img, orientations=8, pixels_per_cell=(16, 16), cells_per_block=(1, 1),channel_axis=-1, **kwargs)
+
+training the classifiers
+np.bool 改为 np.bool_
+X = np.stack(fds_pos + fds_neg)
+y = np.concatenate([np.ones(len(positives), dtype=np.bool_), np.zeros(len(negatives), dtype=np.bool_)])

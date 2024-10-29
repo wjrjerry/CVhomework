@@ -1,0 +1,7 @@
+库导入相关
+在较新的版本中，skimage中marching_cubes_lewiner 已被重命名为 marching_cubes
+
+代码相关
+在第二个ex func中 验证过程的val_loss.extend改为append
+
+之后使用模型预测的时候，extend也改为append
